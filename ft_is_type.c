@@ -12,7 +12,7 @@
 
 #include "libftprintf.h"
 
-int	ft_is_separator(char c)
+int	ft_is_type(char c)
 {
 	const char	*type = "cspdiuxX%";
 	int			i;

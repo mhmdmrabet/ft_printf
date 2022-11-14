@@ -1,38 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:41:42 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:41:42 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/14 20:00:44 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/14 20:00:44 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_strstr(const char *big, const char *little)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
-	size_t	j;
+	int	i;
 
 	i = 0;
-	j = 0;
-	if (!little[j])
-		return ((char *)big);
-	while (big[i])
+	while (s[i])
 	{
-		j = 0;
-		while (little[j])
-		{
-			if (big[i + j] != little[j])
-				break ;
-			j++;
-		}
-		if (j == ft_strlen(little))
-			return ((char *)&big[i]);
+		ft_putchar_fd(s[i], fd);
 		i++;
 	}
-	return (NULL);
 }

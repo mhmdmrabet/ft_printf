@@ -15,6 +15,6 @@
 
 int	main(void)
 {
-	printf("%d", ft_printf("Bonjour je m'appel %s et j'ai %c c %c%c ans%%\n"));
+	ft_printf("%s - %s - %c %% %s %d.\n", "mohamed", "myriam", 'i', "imran", 42);
 	return (0);
 }

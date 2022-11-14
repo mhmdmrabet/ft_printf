@@ -1,40 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_search_params.c                                 :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 12:20:28 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 12:20:28 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/14 20:39:17 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/14 20:39:17 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_search_params(const char *str)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	count;
-	int	i;
-	int	j;
-
-	j = 1;
-	i = 0;
-	count = 0;
-	while (str[i])
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
 	{
-		if (str[i] == '%')
-			j = 0;
-		if (j == 0)
-		{
-			i++;
-			if (ft_is_type(str[i]))
-			{
-				count++;
-				j = 1;
-			}
-		}
-		i++;
+		ft_putchar_fd('-', fd);
+		n = -n;
+		ft_putnbr_fd(n, fd);
 	}
-	return (count);
+	else if (n > 9)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10, fd);
+	}
+	else
+		ft_putchar_fd(n + 48, fd);
 }
