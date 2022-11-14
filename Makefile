@@ -1,6 +1,7 @@
 SRC = ft_printf.c \
-		ft_strnstr.c \
+		ft_strstr.c \
 		ft_strlen.c \
+		ft_is_type.c \
 
 
 OBJ = $(SRC:.c=.o)

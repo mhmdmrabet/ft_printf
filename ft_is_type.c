@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_is_type.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:07:02 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:07:02 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/14 12:13:51 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/14 12:13:51 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdint.h>
+int	ft_is_separator(char c)
+{
+	const char	*type = "cspdiuxX%";
+	int			i;
 
-size_t	ft_strlen(const char *s);
-char	*ft_strstr(const char *big, const char *little);
-int		ft_printf(const char *s, ...);
-int		ft_is_separator(char c);
-
-#endif
+	i = 0;
+	while (type[i])
+	{
+		if (type[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}

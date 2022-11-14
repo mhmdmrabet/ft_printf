@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_search_params.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:41:42 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:41:42 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/14 12:20:28 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/14 12:20:28 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+int	ft_search_params(const char *str)
 {
-	size_t	i;
-	size_t	j;
+	int	count;
+	int	i;
+	int	j;
 
+	j = 1;
 	i = 0;
-	j = 0;
-	if (!little[j])
-		return ((char *)big);
-	while (big[i] && i <= len)
+	count = 0;
+	while (str[i])
 	{
-		j = 0;
-		while (little[j] && ((i + j) < len))
+		if (str[i] == '%')
+			j = 0;
+		if (j == 0)
 		{
-			if (big[i + j] != little[j])
-				break ;
-			j++;
+			i++;
+			if (ft_is_separator(str[i]))
+			{
+				count++;
+				j = 1;
+			}
 		}
-		if (j == ft_strlen(little))
-			return ((char *)&big[i]);
 		i++;
 	}
-	return (NULL);
+	return (count);
 }

@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:07:02 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:07:02 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/14 09:41:42 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/14 09:41:42 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include "libftprintf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdint.h>
+char	*ft_strstr(const char *big, const char *little)
+{
+	size_t	i;
+	size_t	j;
 
-size_t	ft_strlen(const char *s);
-char	*ft_strstr(const char *big, const char *little);
-int		ft_printf(const char *s, ...);
-int		ft_is_separator(char c);
-
-#endif
+	i = 0;
+	j = 0;
+	if (!little[j])
+		return ((char *)big);
+	while (big[i])
+	{
+		j = 0;
+		while (little[j])
+		{
+			if (big[i + j] != little[j])
+				break ;
+			j++;
+		}
+		if (j == ft_strlen(little))
+			return ((char *)&big[i]);
+		i++;
+	}
+	return (NULL);
+}

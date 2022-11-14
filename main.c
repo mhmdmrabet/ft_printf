@@ -15,6 +15,6 @@
 
 int	main(void)
 {
-	printf("%d", ft_printf("Bonjour je m'appel %s et j'ai %c c %c ans\n"));
+	printf("%d", ft_printf("Bonjour je m'appel %s et j'ai %c c %c%c ans%%\n"));
 	return (0);
 }
