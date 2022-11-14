@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libftprintf.h                                      :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:07:02 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:07:02 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/14 10:23:02 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/14 10:23:02 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFTPRINTF_H
-# define LIBFTPRINTF_H
+#include <stdio.h>
+#include "libftprintf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-# include <string.h>
-# include <stdint.h>
-
-size_t	ft_strlen(const char *s);
-char	*ft_strnstr(const char *big, const char *little, size_t len);
-int		ft_printf(const char *s, ...);
-
-#endif
+int	main(void)
+{
+	printf("%d", ft_printf("Bonjour je m'appel %s et j'ai %c c %c ans\n"));
+	return (0);
+}

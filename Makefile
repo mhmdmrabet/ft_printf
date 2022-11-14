@@ -1,4 +1,7 @@
-SRC = ft_printf
+SRC = ft_printf.c \
+		ft_strnstr.c \
+		ft_strlen.c \
+
 
 OBJ = $(SRC:.c=.o)
 
@@ -22,5 +25,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-
