@@ -15,6 +15,7 @@
 
 int	main(void)
 {
-	printf("data.len -> %d\n", ft_printf("%c", 'c'));
+	printf("MY data.len -> %d\n", ft_printf("Je m'appel %s et j'ai %d ans.\n", "Mohamed", 29));
+	printf("REAL data.len -> %d\n", printf("%p", "Mohamed"));
 	return (0);
 }

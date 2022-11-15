@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_convert_nbr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:20:33 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:20:33 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/15 15:22:12 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/15 15:22:12 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *s, ...)
+void	ft_convert_nbr(const char *s, t_printf *data, va_list parameters_infos)
 {
-	t_printf	data;
-	va_list		parameters_infos;
+	t_type	type;
 
-	data.nb_params = ft_search_params(s);
-	va_start(parameters_infos, s);
-	ft_convert(s, parameters_infos, &data);
-	va_end(parameters_infos);
-	return (data.len);
+	if (*s == 'd')
+	{
+		type.decimal_value = (int)va_arg(parameters_infos, int);
+		ft_putnbr(type.decimal_value, data);
+	}
 }

@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_convert_ptr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:20:33 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:20:33 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/15 16:03:59 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/15 16:03:59 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "libftprintf.h";
 
-int	ft_printf(const char *s, ...)
+void	ft_put_ptr(uintptr_t ptr)
 {
-	t_printf	data;
-	va_list		parameters_infos;
+	(void);
+}
 
-	data.nb_params = ft_search_params(s);
-	va_start(parameters_infos, s);
-	ft_convert(s, parameters_infos, &data);
-	va_end(parameters_infos);
-	return (data.len);
+void	ft_convert_ptr(t_printf *data, va_list parameters_infos)
+{
+	t_type	type;
+
+	type.ptr_value = (int)va_arg(parameters_infos, unsigned long long);
+	ft_putstr("0x", data);
+	if (type.ptr_value == 0)
+		ft_putstr("0", data);
+	else
+		ft_put_ptr(type.ptr_value);
 }

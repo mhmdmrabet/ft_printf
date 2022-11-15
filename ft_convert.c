@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_convert.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 09:20:33 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 09:20:33 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/15 09:30:09 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/15 09:30:09 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_printf(const char *s, ...)
+void	ft_convert(const char *s, va_list parameters_infos, t_printf *data)
 {
-	t_printf	data;
-	va_list		parameters_infos;
-
-	data.nb_params = ft_search_params(s);
-	va_start(parameters_infos, s);
-	ft_convert(s, parameters_infos, &data);
-	va_end(parameters_infos);
-	return (data.len);
+	while (*s)
+	{
+		if (*s != '%')
+			ft_putchar_len(*s, data);
+		if (*s == '%')
+		{
+			s++;
+			if (*s == 'c' || *s == 's' || *s == '%')
+				ft_convert_str(s, data, parameters_infos);
+			else if (*s == 'd')
+				ft_convert_nbr(s, data, parameters_infos);
+			if (*s == 'p')
+				ft_convert_ptr(s, data, parameters_infos);
+		}
+		s++;
+	}
 }
