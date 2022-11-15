@@ -22,6 +22,7 @@
 
 typedef struct s_printf
 {
+	int		len;
 	int		nb_params;
 	char	char_value;
 	char	*str_value;
@@ -35,10 +36,9 @@ typedef struct s_type
 }	t_type;
 
 size_t	ft_strlen(const char *s);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putnbr_fd(int n, int fd);
-void	ft_putstr_fd(char *s, int fd);
-char	*ft_strstr(const char *big, const char *little);
+void	ft_putchar_len(char c, t_printf *data);
+void	ft_putnbr(int n, t_printf *data);
+void	ft_putstr(char *s, t_printf *data);
 int		ft_printf(const char *s, ...);
 int		ft_search_params(const char *str);
 int		ft_is_type(char c);

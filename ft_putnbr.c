@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 20:39:17 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 20:39:17 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/15 09:05:46 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/15 09:05:46 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr(int n, t_printf *data)
 {
 	if (n == -2147483648)
-		ft_putstr_fd("-2147483648", fd);
+		ft_putstr("-2147483648", data);
 	else if (n < 0)
 	{
-		ft_putchar_fd('-', fd);
+		ft_putchar_len('-', data);
 		n = -n;
-		ft_putnbr_fd(n, fd);
+		ft_putnbr(n, data);
 	}
 	else if (n > 9)
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		ft_putnbr(n / 10, data);
+		ft_putnbr(n % 10, data);
 	}
 	else
-		ft_putchar_fd(n + 48, fd);
+		ft_putchar_len(n + 48, data);
 }

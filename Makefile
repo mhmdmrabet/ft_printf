@@ -2,9 +2,9 @@ SRC = ft_printf.c \
 		ft_strlen.c \
 		ft_is_type.c \
 		ft_search_params.c \
-		ft_putchar_fd.c \
-		ft_putstr_fd.c \
-		ft_putnbr_fd.c \
+		ft_putchar_len.c \
+		ft_putstr.c \
+		ft_putnbr.c \
 
 
 OBJ = $(SRC:.c=.o)

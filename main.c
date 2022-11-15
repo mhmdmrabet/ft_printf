@@ -15,6 +15,6 @@
 
 int	main(void)
 {
-	ft_printf("%s - %s - %c %% %s %d.\n", "mohamed", "myriam", 'i', "imran", 42);
+	printf("data.len -> %d\n", ft_printf("%c", 'c'));
 	return (0);
 }

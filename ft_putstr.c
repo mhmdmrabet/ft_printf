@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 20:00:44 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 20:00:44 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/15 08:39:48 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/15 08:39:48 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putstr(char *s, t_printf *data)
 {
 	int	i;
 
 	i = 0;
 	while (s[i])
 	{
-		ft_putchar_fd(s[i], fd);
+		ft_putchar_len(s[i], data);
 		i++;
 	}
 }

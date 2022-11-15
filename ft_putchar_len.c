@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putchar_len.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 16:05:09 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 16:05:09 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/15 08:36:49 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/15 08:36:49 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_putchar_len(char c, t_printf *data)
 {
-	write(fd, &c, 1);
+	write(1, &c, 1);
+	data->len++;
 }
