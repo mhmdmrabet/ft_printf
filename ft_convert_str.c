@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_convert_str(const char *s, t_printf *data, va_list parameters_infos)
 {
@@ -24,7 +24,10 @@ void	ft_convert_str(const char *s, t_printf *data, va_list parameters_infos)
 	else if (*s == 's')
 	{
 		type.str_value = (char *)va_arg(parameters_infos, char *);
-		ft_putstr(type.str_value, data);
+		if (type.str_value)
+			ft_putstr(type.str_value, data);
+		else
+			ft_putstr("(null)", data);
 	}
 	else if (*s == '%')
 		ft_putchar_len('%', data);

@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/14 10:23:02 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 10:23:02 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/16 12:01:29 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/16 12:01:29 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-int	main(void)
+void	ft_putnbr_unsigned(unsigned int n, t_printf *data)
 {
-	printf("MY data.len -> %d\n", ft_printf("Je m'appel %s et j'ai %d ans.\n", "Mohamed", 29));
-	printf("REAL data.len -> %d\n", printf("%p", "Mohamed"));
-	return (0);
+	if (n > 9)
+	{
+		ft_putnbr(n / 10, data);
+		ft_putnbr(n % 10, data);
+	}
+	else
+		ft_putchar_len(n + 48, data);
 }

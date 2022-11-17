@@ -6,11 +6,11 @@
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 12:20:11 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/14 10:37:05 by mmrabet          ###   ########.fr       */
+/*   Updated: 2022/11/16 16:45:29 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 size_t	ft_strlen(const char *s)
 {

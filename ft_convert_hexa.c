@@ -1,36 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_convert_ptr.c                                   :+:      :+:    :+:   */
+/*   ft_convert_hexa.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmrabet <mmrabet@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 16:03:59 by mmrabet           #+#    #+#             */
-/*   Updated: 2022/11/15 16:03:59 by mmrabet          ###   ########.fr       */
+/*   Created: 2022/11/16 09:49:48 by mmrabet           #+#    #+#             */
+/*   Updated: 2022/11/16 09:49:48 by mmrabet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_put_ptr(uintptr_t ptr, t_printf *data)
+int	ft_check_sign(char *str)
 {
-	const char	*base_hexa = "0123456789abcdef";
-
-	if (ptr >= 16)
-		ft_put_ptr(ptr / 16, data);
-	ft_putchar_len(base_hexa[ptr % 16], data);
+	while (*str)
+	{
+		if (*str == '-' || *str == '+')
+			return (0);
+		str++;
+	}
+	return (1);
 }
 
-void	ft_convert_ptr(t_printf *data, va_list parameters_infos)
+void	ft_convert_hexa(int nbr, char *base, t_printf *data)
 {
-	t_type	type;
+	int				base_len;
+	long long int	long_nbr;
 
-	type.ptr_value = (uintptr_t)va_arg(parameters_infos, uintptr_t);
-	if (type.ptr_value == 0)
-		ft_putstr("(nil)", data);
-	else
+	long_nbr = nbr;
+	base_len = 16;
+	if (long_nbr < 0)
 	{
-		ft_putstr("0x", data);
-		ft_put_ptr(type.ptr_value, data);
+		long_nbr = long_nbr + (4294967296);
 	}
+	if (long_nbr > base_len -1)
+		ft_convert_hexa(long_nbr / base_len, base, data);
+	ft_putchar_len(base[long_nbr % base_len], data);
 }

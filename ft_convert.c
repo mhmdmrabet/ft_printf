@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
-void	ft_convert(const char *s, va_list parameters_infos, t_printf *data)
+void	ft_convert(const char *s, va_list ap, t_printf *data)
 {
+	data->nb_params = ft_search_params(s);
 	while (*s)
 	{
 		if (*s != '%')
@@ -22,12 +23,17 @@ void	ft_convert(const char *s, va_list parameters_infos, t_printf *data)
 		{
 			s++;
 			if (*s == 'c' || *s == 's' || *s == '%')
-				ft_convert_str(s, data, parameters_infos);
-			else if (*s == 'd')
-				ft_convert_nbr(s, data, parameters_infos);
-			if (*s == 'p')
-				ft_convert_ptr(s, data, parameters_infos);
+				ft_convert_str(s, data, ap);
+			else if (*s == 'd' || *s == 'i' || *s == 'u')
+				ft_convert_nbr(s, data, ap);
+			else if (*s == 'p')
+				ft_convert_ptr(data, ap);
+			else if (*s == 'X')
+				ft_convert_hexa(va_arg(ap, int), "0123456789ABCDEF", data);
+			else if (*s == 'x')
+				ft_convert_hexa(va_arg(ap, int), "0123456789abcdef", data);
 		}
 		s++;
+		data->nb_params--;
 	}
 }

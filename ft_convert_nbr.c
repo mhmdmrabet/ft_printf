@@ -10,15 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
+#include "ft_printf.h"
 
 void	ft_convert_nbr(const char *s, t_printf *data, va_list parameters_infos)
 {
-	t_type	type;
-
-	if (*s == 'd')
-	{
-		type.decimal_value = (int)va_arg(parameters_infos, int);
-		ft_putnbr(type.decimal_value, data);
-	}
+	if (*s == 'd' || *s == 'i')
+		ft_putnbr(va_arg(parameters_infos, int), data);
+	else if (*s == 'u')
+		ft_putnbr_unsigned(va_arg(parameters_infos, unsigned int), data);
 }

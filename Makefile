@@ -5,7 +5,13 @@ SRC = ft_printf.c \
 		ft_putchar_len.c \
 		ft_putstr.c \
 		ft_putnbr.c \
+		ft_convert.c \
+		ft_convert_ptr.c \
+		ft_putnbr_unsigned.c \
+		ft_putnbr.c \
+		ft_convert_nbr.c \
 		ft_convert_str.c \
+		ft_convert_hexa.c \
 
 
 OBJ = $(SRC:.c=.o)
